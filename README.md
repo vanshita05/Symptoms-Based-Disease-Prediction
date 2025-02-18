@@ -26,9 +26,9 @@ Dataset Line:- https://www.kaggle.com/datasets/kaushil268/disease-prediction-usi
 # Results
 
 We utilized various Deep learning models in our project, including Sequential Model with SoftMax Activation Function, Sequential Model Using Dense and Dropout Layers, Decision Tree, Random Forest, SVM, and Gradient Boosting. The accuracies for these models are as follows:
-Sequential Model with SoftMax Activation Function: 97.66%
-Sequential Model Using Dense and Dropout Layers: 95.15%
-Decision Tree: 94.37%
-Random Forest: 90.6%
-SVM: 89.87%
-Gradient Boosting: 86.57%
+1. Sequential Model with SoftMax Activation Function: 97.66%
+2. Sequential Model Using Dense and Dropout Layers: 95.15%
+3. Decision Tree: 94.37%
+4. Random Forest: 90.6%
+5. SVM: 89.87%
+6. Gradient Boosting: 86.57%
