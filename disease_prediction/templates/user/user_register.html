@@ -1,0 +1,123 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Mirrored from preclinic.dreamstechnologies.com/html/template/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 12:37:36 GMT -->
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+      <link rel="shortcut icon" type="image/x-icon" href="{% static '/img/logo.png' %}">
+      <title>DiseaseScan - User Registration</title>
+      <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{% static '/css/feather.css' %}">
+      <link rel="stylesheet" href="{% static '/plugins/fontawesome/css/fontawesome.min.css' %}">
+      <link rel="stylesheet" href="{% static '/plugins/fontawesome/css/all.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
+   </head>
+   <body>
+      <div class="main-wrapper login-body">
+         <div class="container-fluid px-0">
+            <div class="row">
+               <div class="col-lg-6 login-wrap">
+                  <div class="login-sec" style="bottom: -42px; right: 20px;">
+                     <div class="log-img">
+                        <img class="img-fluid" src="{% static '/img/DiseaseScan/user_img.png' %}" alt="Logo" >
+                        <!-- style="width: 700px; height: 627px" -->
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-6 login-wrap-bg">
+                  <div class="login-wrapper">
+                     <div class="loginbox">
+                        <div class="login-right">
+                           <div class="login-right-wrap">
+                              <div class="account-logo">
+                                 <img src="{% static '/img/login-logo.jpeg' %}" height="80px"></a>
+                              </div>
+                              <h2>Register Here!!!</h2>
+                              <h5>Start Journey for Better Health</h5>
+
+                              {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                    <strong>Message:</strong> {{ message}}
+                                    <a href="/user_register/">
+                                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                          <span aria-hidden="true"> &times;</span>
+                                       </button>
+                                    </a>
+                                </div>
+                              {% endfor %}
+                              
+                              <form method="post" action="/user_register/" enctype="multipart/form-data">
+                                 {% csrf_token %}
+                                 <div class="input-block">
+                                    <label>User Name <span class="login-danger">*</span></label>
+                                    <input class="form-control" type="text" id="user_name" name="user_name">
+                                 </div>
+                                 <div class="input-block">
+                                    <label>Full Name <span class="login-danger">*</span></label>
+                                    <input class="form-control" type="text" id="name" name="name">
+                                 </div>
+                                 <div class="input-block">
+                                    <label>Email <span class="login-danger">*</span></label>
+                                    <input class="form-control" type="text" id="email" name="email">
+                                 </div>
+                                 <div class="input-block">
+                                    <label>Date of Birth <span class="login-danger">*</span></label>
+                                    <input class="form-control" type="date" id="dob" name="dob">
+                                 </div>
+                                 <div class="input-block">
+                                    <label>Gender <span class="login-danger">*</span></label><br>
+                                    &emsp;<input type="radio" name="gender" value="Male" checked> &ensp;Male &emsp; &ensp;
+                                    <input type="radio" name="gender" value="Female"> &ensp;Female &emsp; &ensp;
+                                    <input type="radio" name="gender" value="Other"> &ensp;Other &emsp; &ensp;
+                                 </div>
+                                 <div class="input-block">
+                                    <label>Mobile Number <span class="login-danger">*</span></label>
+                                    <input class="form-control" type="number" id="mobile_no" name="mobile_no">
+                                 </div>
+                                 <div class="input-block">
+                                    <label>User Image<span class="login-danger">*</span></label>
+                                    <input class="form-control" type="file" id="img" name="img">
+                                 </div>
+                                 <div class="input-block">
+                                    <label>Password <span class="login-danger">*</span></label>
+                                    <input class="form-control pass-input" type="password" id="password" name="password">
+                                    <span class="profile-views feather-eye-off toggle-password"></span>
+                                 </div>
+                                 <div class="input-block">
+                                    <label>Confirm Password <span class="login-danger">*</span></label>
+                                    <input class="form-control pass-input-confirm" type="password" id="password2" name="password2">
+                                    <span class="profile-views feather-eye-off confirm-password"></span>
+                                 </div>
+                                 <!-- <div class="forgotpass">
+                                    <div class="remember-me">
+                                       <label class="custom_check mr-2 mb-0 d-inline-flex remember-me"> I agree to the <a href="javascript:;">&nbsp terms of service </a>&nbsp and <a href="javascript:;">&nbsp privacy policy </a>
+                                       <input type="checkbox" name="radio">
+                                       <span class="checkmark"></span>
+                                       </label>
+                                    </div>
+                                 </div> -->
+                                 <div class="input-block login-btn">
+                                    <button class="btn btn-primary btn-block" type="submit">Sign up</button>
+                                 </div>
+                              </form>
+                              <div class="next-sign">
+                                 <p class="account-subtitle">Already have account? <a href="/login">Login</a></p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script src="{% static '/js/jquery-3.7.1.min.js' %}" type="87dc232c2ade7bb31c7b7fb0-text/javascript"></script>
+      <script src="{% static '/js/bootstrap.bundle.min.js' %}" type="87dc232c2ade7bb31c7b7fb0-text/javascript"></script>
+      <script src="{% static '/js/feather.min.js' %}" type="87dc232c2ade7bb31c7b7fb0-text/javascript"></script>
+      <script src="{% static '/js/app.js' %}" type="87dc232c2ade7bb31c7b7fb0-text/javascript"></script>
+      <script src="{% static '/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js' %}" data-cf-settings="87dc232c2ade7bb31c7b7fb0-|49" defer></script>
+   </body>
+   <!-- Mirrored from preclinic.dreamstechnologies.com/html/template/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 12:37:36 GMT -->
+</html>

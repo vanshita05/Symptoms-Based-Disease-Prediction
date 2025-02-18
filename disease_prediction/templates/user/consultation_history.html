@@ -1,0 +1,59 @@
+{% extends 'user/user_panel.html' %}
+{% block content %}
+{% load static %}
+
+         <div class="page-wrapper">
+            <div class="content">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="card card-table show-entire">
+                        <div class="card-body">
+                           <div class="page-table-header mb-2">
+                              <div class="row align-items-center">
+                                 <div class="col">
+                                    <div class="doctor-table-blk">
+                                       <h3>Consultation Histroy</h3>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="table-responsive">
+                              <table class="table border-0 custom-table comman-table datatable mb-0">
+                                 <thead>
+                                    <tr>
+                                       <th>Doctor Name</th>
+                                       <th>Doctor Email</th>
+                                       <th>Predicted Disease 1</th>
+                                       <th>Predicted Disease 2</th>
+                                       <th>Predicted Disease 3</th>
+                                       <th>Predicted Disease 4</th>
+                                       <th>Predicted Disease 5</th>
+                                       <th>Consultation Date</th>
+                                       <th>Consultation</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    {% for i in consultation %}
+                                    <tr>
+                                       <td class="profile-image"><img width="28" height="28" src="{{ i.doctor.img.url }}" class="rounded-circle m-r-5" alt>{{i.doctor.name}}</td>
+                                       <td>{{i.doctor.user.email}}</td>
+                                       <td>{{i.diseaseinfo.diseasename1}}:-{{i.diseaseinfo.confidence1}}%</td>
+                                       <td>{{i.diseaseinfo.diseasename2}}:-{{i.diseaseinfo.confidence2}}%</td>
+                                       <td>{{i.diseaseinfo.diseasename3}}:-{{i.diseaseinfo.confidence3}}%</td>
+                                       <td>{{i.diseaseinfo.diseasename4}}:-{{i.diseaseinfo.confidence4}}%</td>
+                                       <td>{{i.diseaseinfo.diseasename5}}:-{{i.diseaseinfo.confidence5}}%</td>
+                                       <td>{{i.consultation_date}}</td>
+                                       <td><a href="/consultationview/{{i.id}}"><button type="submit">Consult</button></a></td>
+                                       {% endfor %}
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+{% endblock %}

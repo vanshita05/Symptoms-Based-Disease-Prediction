@@ -1,0 +1,287 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Mirrored from preclinic.dreamstechnologies.com/html/template/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 12:35:06 GMT -->
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+      <link rel="shortcut icon" type="image/x-icon" href="{% static '/img/logo.png' %}">
+      <title>DiseaseScan - Admin</title>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css'%}">
+      <link rel="stylesheet" href="{% static '/plugins/fontawesome/css/fontawesome.min.css' %}">
+      <link rel="stylesheet" href="{% static '/plugins/fontawesome/css/all.min.css'%}">
+      <link rel="stylesheet" type="text/css" href="{% static '/css/select2.min.css'%}">
+      <link rel="stylesheet" href="{% static '/plugins/datatables/datatables.min.css'%}">
+      <link rel="stylesheet" href="{% static '/css/feather.css'%}">
+      <link rel="stylesheet" type="text/css" href="{% static '/css/style.css'%}">
+
+
+      <script>
+          function getGreeting() {
+              var date = new Date();
+              var hour = date.getHours();
+              var greeting;
+
+              if (hour < 12) {
+                  greeting = 'Good Morning';
+              } else if (hour < 18) {
+                  greeting = 'Good Afternoon';
+              } else {
+                  greeting = 'Good Evening';
+              }
+
+              return greeting;
+          }
+
+          window.onload = function() {
+              var greetingMessage = document.getElementById('greeting-message');
+              greetingMessage.innerText = getGreeting();
+          };
+      </script>
+
+
+   </head>
+   <body>
+      <div class="main-wrapper">
+         <div class="header">
+            <div class="header-left">
+               <a class="logo">
+               <img src="{% static '/img/login-logo.jpeg' %}" width="450" height="60" alt>
+               </a>
+            </div>
+<!--            <a id="toggle_btn" href="javascript:void(0);"><img src="{% static '/img/icons/bar-icon.svg' %}" alt></a>-->
+            <ul class="nav user-menu float-end">
+               <li class="nav-item dropdown has-arrow user-profile-list">
+                  <a href="#" class="dropdown-toggle nav-link user-link" data-bs-toggle="dropdown">
+                     <div class="user-names">
+                        <h5>{{u.name}} </h5>
+                        <span>Admin</span>
+                     </div>
+                     <span class="user-img">
+                     <img src="{{u.img.url}}" alt="Admin">
+                     </span>
+                  </a>
+                  <div class="dropdown-menu">
+                     <a class="dropdown-item" href="/madmin/profile">My Profile</a>
+                     <a class="dropdown-item" href="/madmin/edit_profile">Edit Profile</a>
+                     <a class="dropdown-item" href="/logout">Logout</a>
+                  </div>
+               </li>
+            </ul>
+         </div>
+         <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+               <div id="sidebar-menu" class="sidebar-menu">
+                  <ul>
+                     <li class="menu-title">Main</li>
+                     <li>
+                        <a href="/madmin/index"><span class="menu-side"><img src="{% static '/img/icons/menu-icon-01.svg'%}" alt></span> <span> Dashboard </span></a>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><span class="menu-side"><img src="{% static '/img/icons/menu-icon-02.svg'%}" alt></span> <span> Doctors </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                           <li><a href="/madmin/doctors">Doctor List</a></li>
+                           <li><a href="/madmin/add_doctor">Add Doctor</a></li>
+                        </ul>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><span class="menu-side"><img src="{% static '/img/icons/menu-icon-03.svg' %}" alt></span> <span>Users </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                           <li><a href="/madmin/users">Users List</a></li>
+                           <li><a href="/madmin/add_user">Add Users</a></li>
+                        </ul>
+                     </li>
+                     <li>
+                        <a href="/madmin/consultation"><span class="menu-side"><img src="{% static '/img/icons/menu-icon-04.svg' %}" alt></span> <span> Consultation </span></a>
+                     </li>
+                     <li>
+                        <a href="/madmin/disease_info"><span class="menu-side"><img src="{% static '/img/icons/menu-icon-13.svg' %}" alt></span> <span> Disease Information </span></a>
+                     </li>
+                     <li>
+                        <a href="/madmin/system_feedback"><span class="menu-side"><img src="{% static '/img/icons/menu-icon-15.svg' %}" alt></span> <span>System Feedback</span></a>
+                     </li>
+<!--                     <li>-->
+<!--                        <a href="/madmin/chat"><span class="menu-side"><img src="{% static '/img/icons/menu-icon-10.svg' %}" alt></span> <span>Chat</span></a>-->
+<!--                     </li>-->
+                  </ul>
+                  <div class="logout-btn">
+                     <a href="/logout"><span class="menu-side"><img src="{% static '/img/icons/logout.svg' %}" alt></span> <span>Logout</span></a>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         {% block content %}
+
+         <div class="page-wrapper">
+            <div class="content">
+               <div class="good-morning-blk">
+                  <div class="row">
+                     <div class="col-md-6" style="margin-top: 50px;">
+                        <div class="morning-user">
+                           <h2><a id="greeting-message"></a>, <span>{{u.name}}</span></h2>
+                           <p>Have a nice day at work</p>
+                        </div>
+                     </div>
+                     <div class="col-md-6 position-blk">
+                        <div class="morning-img">
+                           <img src="{% static '/img/morning-img-01.png' %}" alt>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="doctor-list-blk">
+                  <div class="row">
+                     <div class="col-xl-3 col-md-6">
+                        <div class="doctor-widget border-right-bg">
+                           <div class="doctor-box-icon flex-shrink-0">
+                              <img src="{% static '/img/icons/doctor-dash-02.svg' %}" alt>
+                           </div>
+                           <div class="doctor-content dash-count flex-grow-1">
+                              <h4><span class="counter-up">{{total_doctor}}</span><span></span></h4>
+                              <h5>No. Of Doctors</h5>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-3 col-md-6">
+                        <div class="doctor-widget border-right-bg">
+                           <div class="doctor-box-icon flex-shrink-0">
+                              <img src="{% static '/img/icons/doctor-dash-02.svg' %}" alt>
+                           </div>
+                           <div class="doctor-content dash-count flex-grow-1">
+                              <h4><span class="counter-up">{{total_users}}</span><span></span></h4>
+                              <h5>No. Of User</h5>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-3 col-md-6">
+                        <div class="doctor-widget border-right-bg">
+                           <div class="doctor-box-icon flex-shrink-0">
+                              <img src="{% static '/img/icons/doctor-dash-01.svg' %}" alt>
+                           </div>
+                           <div class="doctor-content dash-count flex-grow-1">
+                              <h4><span class="counter-up">{{total_consult}}</span><span></span></h4>
+                              <h5>No. Of Consultation</h5>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-3 col-md-6">
+                        <div class="doctor-widget">
+                           <div class="doctor-box-icon flex-shrink-0">
+                              <img src="{% static '/img/icons/doctor-dash-04.svg' %}" alt>
+                           </div>
+                           <div class="doctor-content dash-count flex-grow-1">
+                              <h4><span class="counter-up">41</span><span></span></h4>
+                              <h5>Total No. Of Diseases</h5>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-12 col-xl-12">
+                     <div class="card">
+                        <div class="card-header pb-0">
+                           <h4 class="card-title d-inline-block">Recent User</h4>
+                           <a href="/madmin/users" class="float-end patient-views">Show all</a>
+                        </div>
+                        <div class="card-block table-dash">
+                           <div class="table-responsive">
+                              <table class="table mb-0 border-0 datatable custom-table">
+                                 <thead>
+                                    <tr>
+                                       <th>User Name</th>
+                                       <th>Name</th>
+                                       <th>Email</th>
+                                       <th>Date of Birth</th>
+                                       <th>Gender</th>
+                                       <th>Mobile</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                 {% for i in uid %}
+                                    <tr>
+                                       <td class="profile-image"><a href="/madmin/user_profile?id={{ i.user.id }}"><img width="28" height="28" src="{{i.img.url}}" class="rounded-circle m-r-5" alt>{{i.user.username}}</a></td>
+                                       <td>{{i.name}}</td>
+                                       <td><a href="https://preclinic.dreamstechnologies.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e5809d8488958980a58088848c89cb868a88">{{i.user.email}}</a></td>
+                                       <td>{{i.dob}}</td>
+                                       <td>{{i.gender}}</td>
+                                       <td><a href="javascript:;">{{i.mobile_no}}</a></td>
+                                    </tr>
+                                 {% endfor %}
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-12 col-xl-12">
+                     <div class="card">
+                        <div class="card-header pb-0">
+                           <h4 class="card-title d-inline-block">Recent Doctor</h4>
+                           <a href="/madmin/doctors" class="float-end patient-views">Show all</a>
+                        </div>
+                        <div class="card-block table-dash">
+                           <div class="table-responsive">
+                              <table class="table mb-0 border-0 datatable custom-table">
+                                 <thead>
+                                    <tr>
+                                       <th>User Name</th>
+                                       <th>Doctor Name</th>
+                                       <th>Email Id</th>
+                                       <th>Date Of Birth</th>
+                                       <th>Gender</th>
+                                       <th>Mobile No.</th>
+                                       <th>Registration No.</th>
+                                       <th>Qualification</th>
+                                       <th>Specialization</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                 {% for i in did %}
+                                    <tr>
+                                       <td class="profile-image"><a href="/madmin/doctor_profile?id={{ i.user.id }}"><img width="28" height="28" src="{{i.img.url}}" class="rounded-circle m-r-5" alt> {{i.user.username}}</a></td>
+                                       <td>{{i.name}}</td>
+                                       <td><a href="https://preclinic.dreamstechnologies.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3b5e435a564b575e7b5e565a525715585456">{{i.user.email}}</a></td>
+                                       <td>{{i.dob}}</td>
+                                       <td>{{i.gender}}</td>
+                                       <td><a href="javascript:;">{{i.mobile_no}}</a></td>
+                                       <td>{{i.registration_no}}</td>
+                                       <td>{{i.qualification}}</td>
+                                       <td>{{i.specialization}}</td>
+                                    </tr>
+                                 {% endfor %}
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+      </div>
+
+      {% endblock %}
+
+      <div class="sidebar-overlay" data-reff></div>
+      <script src="{% static '/js/jquery-3.7.1.min.js' %}" type="48928098fcceba68b5d85261-text/javascript"></script>
+      <script src="{% static '/js/bootstrap.bundle.min.js' %}" type="48928098fcceba68b5d85261-text/javascript"></script>
+      <script src="{% static '/js/feather.min.js' %}" type="48928098fcceba68b5d85261-text/javascript"></script>
+      <script src="{% static '/js/jquery.slimscroll.js' %}" type="48928098fcceba68b5d85261-text/javascript"></script>
+      <script src="{% static '/js/select2.min.js' %}" type="48928098fcceba68b5d85261-text/javascript"></script>
+      <script src="{% static '/plugins/datatables/jquery.dataTables.min.js' %}" type="48928098fcceba68b5d85261-text/javascript"></script>
+      <script src="{% static '/plugins/datatables/datatables.min.js' %}" type="48928098fcceba68b5d85261-text/javascript"></script>
+      <script src="{% static '/js/jquery.waypoints.js'%}" type="48928098fcceba68b5d85261-text/javascript"></script>
+      <script src="{% static '/js/jquery.counterup.min.js'%}" type="48928098fcceba68b5d85261-text/javascript"></script>
+      <script src="{% static '/plugins/apexchart/apexcharts.min.js'%}" type="48928098fcceba68b5d85261-text/javascript"></script>
+      <script src="{% static '/plugins/apexchart/chart-data.js'%}" type="48928098fcceba68b5d85261-text/javascript"></script>
+      <script src="{% static '/js/app.js' %}" type="48928098fcceba68b5d85261-text/javascript"></script>
+      <script src="{% static '/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js' %}" data-cf-settings="48928098fcceba68b5d85261-|49" defer></script>
+   </body>
+   <!-- Mirrored from preclinic.dreamstechnologies.com/html/template/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 12:35:55 GMT -->
+</html>

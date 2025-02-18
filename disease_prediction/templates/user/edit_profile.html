@@ -1,0 +1,79 @@
+{% extends 'user/user_panel.html' %}
+{% block content %}
+{% load static %}
+
+
+         <div class="page-wrapper">
+            <div class="content">
+               <form method="post" action="" enctype="multipart/form-data">
+                   {% csrf_token %}
+                  <div class="card-box">
+                     <h3 class="card-title">Basic Informations</h3>
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="profile-img-wrap">
+                              <img class="inline-block" src="{{u.img.url}}" alt="user">
+                              <div class="fileupload btn">
+                                 <span class="btn-text">edit</span>
+                                 <input class="upload" type="file" id="img" name="img">
+                              </div>
+                           </div>
+                           <div class="profile-basic">
+                              <div class="row">
+                                 <div class="col-md-6">
+                                    <div class="input-block local-forms">
+                                       <label class="focus-label">Userame</label>
+                                       <input type="text" class="form-control floating" value="{{u.user.username}}" id="username" name="username">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="input-block local-forms">
+                                       <label class="focus-label">Name</label>
+                                       <input type="text" class="form-control floating" value="{{u.name}}" id="name" name="name">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="input-block local-forms">
+                                       <label class="focus-label">Email</label>
+                                       <input type="email" class="form-control floating" value="{{u.user.email}}" id="email" name="email">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="input-block local-forms ">
+                                       <label class="focus-label">Birth Date</label>
+                                       <div >
+                                          <center><a>{{u.dob}}</a></center>
+                                          <input class="form-control floating datetimepicker" type="date" id="dob" name="dob">
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="input-block local-forms">
+                                       <label class="focus-label">Gender</label>
+                                       <select class="form-control select" id="gender" name="gender" >
+                                          <option {% if u.gender == 'Male' %}selected{% endif %}>Male</option>
+                                          <option {% if u.gender == 'Female' %}selected{% endif %}>Female</option>
+                                          <option {% if u.gender == 'Other' %}selected{% endif %}>Other</option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="input-block local-forms">
+                                       <label class="focus-label">Phone</label>
+                                       <input type="number" class="form-control floating" value="{{u.mobile_no}}" id="mobile_no" name="mobile_no">
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="text-center ">
+                     <button class="btn btn-primary submit-btn mb-4" type="submit">Save</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+
+{% endblock %}

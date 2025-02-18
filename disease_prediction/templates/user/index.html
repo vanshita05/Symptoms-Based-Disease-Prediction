@@ -1,0 +1,274 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Mirrored from preclinic.dreamstechnologies.com/html/template/patient-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 12:36:15 GMT -->
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+      <link rel="shortcut icon" type="image/x-icon" href="{% static '/img/logo.png' %}">
+      <title>DiseaseScan</title>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{% static '/plugins/fontawesome/css/fontawesome.min.css' %}">
+      <link rel="stylesheet" href="{% static '/plugins/fontawesome/css/all.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static '/css/select2.min.css' %}">
+      <link rel="stylesheet" href="{% static '/plugins/simple-calendar/simple-calendar.css' %}">
+      <link rel="stylesheet" href="{% static '/plugins/datatables/datatables.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static '/plugins/slick/slick.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static '/plugins/slick/slick-theme.css' %}">
+      <link rel="stylesheet" href="{% static '/css/feather.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
+
+
+      <link rel="stylesheet" href="{% static '/css/website/style_website.css' %}">
+      <link rel="stylesheet" href="{% static '/css/website/responsive.css' %}">
+      <link rel="stylesheet" href="{% static '/css/website/bootstrap.css' %}">
+      <link rel="stylesheet" href="{% static '/css/website/font-awesome.min.css' %}">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@3.0.1/dist/css/multi-select-tag.css">
+      <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha256-mLBIhmBvigTFWPSCtvdu6a76T+3Xyt+K571hupeFLg4=" crossorigin="anonymous" /> -->
+      <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" /> -->
+      <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css"> -->
+      <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet"> -->
+      <script>
+         window.addEventListener('DOMContentLoaded', () => {
+             const teamCarousel = document.querySelector('.team_carousel');
+             const items = teamCarousel.querySelectorAll('.item');
+             const totalItems = items.length;
+             let currentIndex = 0;
+             let transitionTime = 0.5; // seconds
+             let transitionInterval = 3000; // milliseconds
+         
+             // Calculate total width of items including margins
+             const itemWidth = items[0].offsetWidth + parseInt(window.getComputedStyle(items[0]).marginRight);
+             const totalWidth = itemWidth * totalItems;
+         
+             // Update carousel position
+             function updateCarousel() {
+                 teamCarousel.style.transition = `transform ${transitionTime}s ease`;
+                 teamCarousel.style.transform = `translateX(-${itemWidth * currentIndex}px)`;
+             }
+         
+             // Increment current index and update carousel
+             function nextDoctor() {
+                 currentIndex++;
+                 if (currentIndex >= totalItems - 2) {
+                     currentIndex = 0;
+                 }
+                 updateCarousel();
+             }
+         
+             // Automatically switch doctors after a set interval
+             setInterval(() => {
+                 nextDoctor();
+             }, transitionInterval);
+         });
+      </script>
+      <style>
+         .team_section {
+         position: relative;
+         overflow: hidden;
+         }
+         .team_carousel {
+         display: flex;
+         flex-wrap: nowrap;
+         transition: transform 0.5s ease;
+         }
+         .team_carousel .item {
+         flex: 0 0 auto;
+         margin-right: 10px;
+         padding: 10px;
+         background-color: #fff;
+         border-radius: 10px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         width: 300px; /* Adjust width as needed */
+         }
+         .team_carousel .item img {
+         width: 100%;
+         border-radius: 5px;
+         }
+         .arrow {
+         position: absolute;
+         top: 50%;
+         transform: translateY(-50%);
+         background-color: rgba(255, 255, 255, 0.5);
+         padding: 10px;
+         border-radius: 50%;
+         cursor: pointer;
+         transition: background-color 0.3s ease;
+         }
+         .arrow:hover {
+         background-color: rgba(255, 255, 255, 0.8);
+         }
+         .prev-arrow {
+         left: 10px;
+         }
+         .next-arrow {
+         right: 10px;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="main-wrapper">
+         <div class="header">
+            <div class="header-left">
+               <a href="index.html" class="logo">
+               <img src="{% static '/img/login-logo.jpeg' %}" width="450" height="60" alt>
+               </a>
+            </div>
+            <ul class="nav user-menu float-end" style="margin-left: 28px;">
+               {% if user.is_authenticated %}
+                  <li class="nav-item dropdown has-arrow user-profile-list">
+                     <a href="/user_panel" class="dropdown-toggle nav-link user-link" >
+                        <div class="user-names">
+                           <h5>Dashboard</h5>
+                        </div>
+                     </a>
+                  </li>
+               {% endif %}
+               <li class="nav-item">
+                  <a href="/login" class="nav-link" >
+                     <div class="user-names">
+                        <i class="fa fa-user" aria-hidden="true" style="color: #00929C; margin-right: 10px;"></i>
+                        <span style="font-size: 18px; color: #00929C;">Login</span>
+                        <!-- <h5>Login</h5> -->
+                     </div>
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+
+       {% block content %}
+
+      <!-- slider section -->
+      <section class="slider_section" style="margin-top: 80px; height:640px;">
+         <div class="dot_design">
+            <img src="{% static '/img/DiseaseScan/dots.png' %}" style="margin-top: -217px; height: 600px;">
+         </div>
+         <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <div class="container ">
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="detail-box">
+                              <h1>
+                                 Making Health <br>
+                                 <span>
+                                 Care Better Together
+                                 </span>
+                              </h1>
+                              <p>
+                                 Discover the future of healthcare through our innovative technology solutions. From electronic records to telemedicine, we're revolutionizing access and personalized care. Join us in shaping a healthier tomorrow.
+                              </p>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="img-box">
+                              <img src="{% static '/img/DiseaseScan/slider-img.png' %}" alt="">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- end slider section -->
+      <section class="about_section layout_padding">
+      <div class="container  ">
+        <div class="row">
+          <div class="col-md-6 ">
+            <div class="img-box">
+              <img src="{% static '\img\about-img.png' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="detail-box">
+              <div class="heading_container">
+                <h2>
+                  About <span>System</span>
+                </h2>
+              </div>
+              <p>
+                Greetings from our modern platform for disease prediction! Using information from users' or patients' symptoms, our website uses advanced algorithms to forecast possible diseases.
+                Users may get immediate insights into potential health issues with a few easy inputs, enabling them to take proactive measures for their well-being.
+                Furthermore, our website provides easy scheduling of consultations and even allows users to interact with doctors directly for individualized assistance and support.
+                This smooth connection with healthcare experts is another feature of our platform. With our easy-to-use and simple platform, take charge of your health journey now!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+       {% endblock %}
+
+      <footer class="footer_section">
+         <div class="container">
+            <p>
+               &copy; <span id="displayYear"></span> All Rights Reserved By
+               <a href="#">DiseaseScan</a>
+            </p>
+         </div>
+      </footer>
+      <script>
+         // JavaScript for manual navigation
+         let currentIndex = 0;
+         const teamCarousel = document.querySelector('.team_carousel');
+         
+         function prevDoctor() {
+             currentIndex = Math.max(currentIndex - 1, 0);
+             updateCarousel();
+         }
+         
+         function nextDoctor() {
+             currentIndex = Math.min(currentIndex + 1, teamCarousel.children.length - 1);
+             updateCarousel();
+         }
+         
+         function updateCarousel() {
+             const itemWidth = teamCarousel.children[0].offsetWidth + parseInt(window.getComputedStyle(teamCarousel.children[0]).marginRight);
+             teamCarousel.style.transform = `translateX(-${itemWidth * currentIndex}px)`;
+         }
+         
+         // JavaScript for automatic rotation every 3 seconds
+         setInterval(() => {
+             nextDoctor();
+         }, 3000);
+      </script>
+      <div class="sidebar-overlay" data-reff></div>
+      <script src="{% static '/js/jquery-3.7.1.min.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/js/bootstrap.bundle.min.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/js/feather.min.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/js/jquery.slimscroll.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/js/select2.min.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/plugins/datatables/jquery.dataTables.min.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/plugins/datatables/datatables.min.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/plugins/simple-calendar/jquery.simple-calendar.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/js/calander.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/plugins/apexchart/apexcharts.min.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/plugins/apexchart/chart-data.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/js/circle-progress.min.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/plugins/slick/slick.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/js/app.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js' %}" data-cf-settings="bdd448f9add30b2da5b2c265-|49" defer></script>
+
+
+      <script src="{% static '/js/Website/bootstrap.js' %}"></script>
+      <script src="{% static '/js/Website/custom.js' %}"></script>
+      <script src="{% static '/js/Website/jquery-3.4.1.min.js' %}"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha256-Zr3vByTlMGQhvMfgkQ5BtWRSKBGa2QlspKYJnkjZTmo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@3.0.1/dist/js/multi-select-tag.js"></script>
+      <script>
+        new MultiSelectTag('countries')  // id
+      </script>
+
+      <script src='https://codepen.io/FlorinPop17/pen/LYEBjmB.js'></script>
+      <script  src="{% static '/js/Website/progress_script.js' %}"></script>
+   </body>
+   <!-- Mirrored from preclinic.dreamstechnologies.com/html/template/patient-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 12:36:18 GMT -->
+</html>

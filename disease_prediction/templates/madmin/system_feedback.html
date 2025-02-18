@@ -1,0 +1,45 @@
+{% extends 'madmin/index.html' %}
+{% block content %}
+{% load static %}
+
+         <div class="page-wrapper">
+            <div class="content">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="card card-table show-entire">
+                        <div class="card-body">
+                           <div class="page-table-header mb-2">
+                              <div class="row align-items-center">
+                                 <div class="col">
+                                    <div class="doctor-table-blk">
+                                       <h2>System Feedback</h2>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="table-responsive">
+                              <table class="table border-0 custom-table comman-table datatable mb-0">
+                                 <thead>
+                                    <tr>
+                                       <th>Sender Name</th>
+                                       <th>Message</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                 {% for i in fid %}
+                                    <tr>
+                                       <td class="profile-image">{{i.sender}}</td>
+                                       <td>{{i.feedback}}</td>
+                                    </tr>
+                                 {% endfor %}
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+      </div>
+
+{% endblock %}

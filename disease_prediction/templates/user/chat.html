@@ -1,0 +1,120 @@
+{% extends 'user/user_panel.html' %}
+{% block content %}
+{% load static %}
+
+         <div class="page-wrapper">
+            <div class="content">
+               <div class="row">
+                  <div class="col-xl-5 d-flex">
+                     <div class="card chat-box-clinic ">
+                        <div class="chat-widgets">
+                           <div class="chat-user-group d-flex align-items-center" style="pointer-events: none;">
+                              <div class="chat-users">
+                                 <div class="user-titles d-flex">
+                                    <h2> Disease Information </h2>
+                                 </div>
+                                 <div class="user-text d-flex">
+                                    <h6>List Of Symptoms:-</h6>
+                                 </div>
+                                 {% for i in consultation_obj.diseaseinfo.symptomsname %}
+                                    <p>{{i}}</p>
+                                 {% endfor %}
+                                 <div class="user-text d-flex">
+                                    <h6>Predicted Diseases And it's Probability</h6>
+                                 </div>
+                                 <p>{{consultation_obj.diseaseinfo.diseasename1}}:-{{consultation_obj.diseaseinfo.confidence1}}%</p>
+                                 <p>{{consultation_obj.diseaseinfo.diseasename2}}:-{{consultation_obj.diseaseinfo.confidence2}}%</p>
+                                 <p>{{consultation_obj.diseaseinfo.diseasename3}}:-{{consultation_obj.diseaseinfo.confidence3}}%</p>
+                                 <p>{{consultation_obj.diseaseinfo.diseasename4}}:-{{consultation_obj.diseaseinfo.confidence4}}%</p>
+                                 <p>{{consultation_obj.diseaseinfo.diseasename5}}:-{{consultation_obj.diseaseinfo.confidence5}}%</p>
+
+                                 <div class="user-text d-flex">
+                                    <h6>Patient Age:-</h6>
+                                 </div>
+                                 <p>{{consultation_obj.patient.age}}</p>
+                                 <div class="user-text d-flex">
+                                    <h6>Consultation Date:-</h6>
+                                 </div>
+                                 <p>{{consultation_obj.consultation_date}}</p>
+                              </div>
+                           </div>
+                           <a href="/doctor_review/{{consultation_id}}"><button type="submit">Doctor Review</button></a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-7">
+                     <div class="card chat-box ">
+                        <div class=" chat-search-group ">
+                           <div class="chat-user-group mb-0 d-flex align-items-center">
+                              <div class="img-users call-user">
+                                 <img src="{{consultation_obj.doctor.img.url}}" alt="img">
+                              </div>
+                              <div class="chat-users">
+                                 <div class="user-titles">
+                                    <h5>{{consultation_obj.doctor.name}}</h5>
+                                 </div>
+                                 <div class="user-text">
+                                    <p>{{consultation_obj.doctor.specialization}}</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card chat-message-box">
+                        <div class="card-body p-0">
+                           <div class="chat-body" style="height: 380px; overflow-y: auto;">
+                              <ul class="list-unstyled chat-message">
+                                 {% for message in all_messages %}
+                                    {% if message.sender == x %}
+                                       <li class="media d-flex sent">
+                                          <div class="media-body flex-grow-1">
+                                             <div class="msg-box">
+                                                <div class="message-sub-box">
+                                                   <p>{{message.message}}</p>
+                                                   <span>{{message.created}}</span>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </li>
+                                       {% else %}
+                                       <li class="media d-flex received">
+                                          <div class="media-body flex-grow-1">
+                                             <div class="msg-box">
+                                                <div class="message-sub-box">
+                                                   <p>{{message.message}}</p>
+                                                   <span>{{message.created}}</span>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </li>
+                                    {% endif %}
+                                 {% endfor %}
+                              </ul>
+                           </div>
+                           <div class="chat-footer-box">
+                              <div class="discussion-sent">
+                                 <div class="row gx-2">
+                                    <div class="col-lg-12 ">
+                                       <div class="footer-discussion">
+                                          <div class="inputgroups">
+                                             <form action="/chat/" enctype="multipart/form-data" method="post">
+                                                {% csrf_token %}
+                                                <input type="text" placeholder="Type your Message here..." id="chat-msg" name="chat-msg">
+                                                <div class="send-chat position-icon comman-flex">
+                                                   <button type="submit">Send</button>
+                                                </div>
+                                             </form>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+      </div>
+
+{% endblock %}

@@ -1,0 +1,217 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Mirrored from preclinic.dreamstechnologies.com/html/template/patient-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 12:36:15 GMT -->
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+      <link rel="shortcut icon" type="image/x-icon" href="{% static '/img/logo.png' %}">
+      <title>DiseaseScan - User</title>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{% static '/plugins/fontawesome/css/fontawesome.min.css' %}">
+      <link rel="stylesheet" href="{% static '/plugins/fontawesome/css/all.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static '/css/select2.min.css' %}">
+      <link rel="stylesheet" href="{% static '/plugins/simple-calendar/simple-calendar.css' %}">
+      <link rel="stylesheet" href="{% static '/plugins/datatables/datatables.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static '/plugins/slick/slick.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static '/plugins/slick/slick-theme.css' %}">
+      <link rel="stylesheet" href="{% static '/css/feather.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
+
+
+      <link rel="stylesheet" href="{% static '/css/website/style_website.css' %}">
+      <link rel="stylesheet" href="{% static '/css/website/responsive.css' %}">
+      <link rel="stylesheet" href="{% static '/css/website/bootstrap.css' %}">
+      <link rel="stylesheet" href="{% static '/css/website/font-awesome.min.css' %}">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@3.0.1/dist/css/multi-select-tag.css">
+
+
+      <script>
+          function getGreeting() {
+              var date = new Date();
+              var hour = date.getHours();
+              var greeting;
+
+              if (hour < 12) {
+                  greeting = 'Good Morning';
+              } else if (hour < 18) {
+                  greeting = 'Good Afternoon';
+              } else {
+                  greeting = 'Good Evening';
+              }
+
+              return greeting;
+          }
+
+          window.onload = function() {
+              var greetingMessage = document.getElementById('greeting-message');
+              greetingMessage.innerText = getGreeting();
+          };
+      </script>
+
+   </head>
+   <body>
+      <div class="main-wrapper">
+         <div class="header">
+            <div class="header-left">
+               <a class="logo">
+               <img src="{% static '/img/login-logo.jpeg' %}" width="450" height="60" alt>
+               </a>
+            </div>
+<!--            <a id="toggle_btn" href="javascript:void(0);" style="margin-top: 25px;"><img src="{% static '/img/icons/bar-icon.svg' %}" alt></a>-->
+            <ul class="nav user-menu float-end">
+                <li class="nav-item dropdown has-arrow user-profile-list">
+                  <a href="#" class="dropdown-toggle nav-link user-link" data-bs-toggle="dropdown">
+                     <div class="user-names">
+                        <h5>{{u.name}} </h5>
+                        <span>User</span>
+                     </div>
+                     <span class="user-img">
+                     <img src="{{u.img.url}}" alt="User">
+                     </span>
+                  </a>
+                  <div class="dropdown-menu">
+                     <a class="dropdown-item" href="/profile">My Profile</a>
+                     <a class="dropdown-item" href="/edit_profile">Edit Profile</a>
+                     <a class="dropdown-item" href="/logout">Logout</a>
+                  </div>
+               </li>
+            </ul>
+         </div>
+         <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+               <div id="sidebar-menu" class="sidebar-menu">
+                  <ul>
+                     <li class="menu-title">Main</li>
+                     <li>
+                        <a href="/"><span class="menu-side"><img src="{% static '/img/icons/menu-icon-01.svg' %}" alt></span> <span> Home </span></a>
+                     </li>
+                     <li>
+                        <a href="/user_panel"><span class="menu-side"><img src="{% static '/img/icons/menu-icon-01.svg' %}" alt></span> <span> Dashboard </span></a>
+                     </li>
+                     <li>
+                        <a href="/disease_prediction"><span class="menu-side"><img src="{% static '/img/icons/menu-icon-01.svg' %}" alt></span> <span> Disease Prediction </span></a>
+                     </li>
+                     <li>
+                        <a href="/consultation_history"><span class="menu-side"><img src="{% static '/img/icons/menu-icon-04.svg' %}" alt></span> <span> Consultation History </span></a>
+                     </li>
+                     <li>
+                        <a href="/system_feedback"><span class="menu-side"><img src="{% static '/img/icons/menu-icon-15.svg' %}" alt></span> <span>System Feedback</span></a>
+                     </li>
+<!--                     <li>-->
+<!--                        <a href="/chat"><span class="menu-side"><img src="{% static '/img/icons/menu-icon-10.svg' %}" alt></span> <span>Chat</span></a>-->
+<!--                     </li>-->
+                  </ul>
+                  <div class="logout-btn">
+                     <a href="/logout"><span class="menu-side"><img src="{% static '/img/icons/logout.svg' %}" alt></span> <span>Logout</span></a>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         {% block content %}
+
+         <div class="page-wrapper">
+            <div class="content">
+               <div class="good-morning-blk">
+                  <div class="row">
+                     <div class="col-md-6" style="margin-top: 50px;">
+                        <div class="morning-user">
+                           <h2><a id="greeting-message"></a>, <span>{{u.name}} </span></h2>
+                           <p>Have a nice day at work</p>
+                        </div>
+                     </div>
+                     <div class="col-md-6 position-blk">
+                        <div class="morning-img">
+                           <img src="{% static '/img/morning-img-03.png' %}" alt>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-12 col-md-12 col-xl-12">
+                     <div class="row">
+                        <div class="col-12 col-md-12  col-xl-12">
+                           <div class="card">
+                              <div class="card-header">
+                                 <h4 class="card-title d-inline-block">Medical History</h4>
+                              </div>
+                              <div class="card-body p-0 table-dash">
+                                 <div class="table-responsive">
+                                    <table class="table mb-0 border-0 datatable custom-table patient-table">
+                                       <thead>
+                                          <tr>
+                                             <th>No. of Symptoms</th>
+                                             <th>Symptoms</th>
+                                             <th>Predicted Disease 1</th>
+                                             <th>Predicted Disease 2</th>
+                                             <th>Predicted Disease 3</th>
+                                             <th>Predicted Disease 4</th>
+                                             <th>Predicted Disease 5</th>
+                                          </tr>
+                                       </thead>
+                                       <tbody>
+                                       {% for i in uid %}
+                                          <tr>
+                                             <td>{{i.no_of_symp}}</td>
+                                             <td>{{i.symptomsname}}</td>
+                                             <td>{{i.diseasename1}} : {{i.confidence1}}%</td>
+                                             <td>{{i.diseasename2}} : {{i.confidence2}}%</td>
+                                             <td>{{i.diseasename3}} : {{i.confidence3}}%</td>
+                                             <td>{{i.diseasename4}} : {{i.confidence4}}%</td>
+                                             <td>{{i.diseasename5}} : {{i.confidence5}}%</td>
+                                          </tr>
+                                       {% endfor %}
+                                       </tbody>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>   
+               </div>
+            </div>
+         </div>
+      </div>
+
+          {% endblock %}
+
+      <div class="sidebar-overlay" data-reff></div>
+      <script src="{% static '/js/jquery-3.7.1.min.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/js/bootstrap.bundle.min.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/js/feather.min.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/js/jquery.slimscroll.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/js/select2.min.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/plugins/datatables/jquery.dataTables.min.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/plugins/datatables/datatables.min.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/plugins/simple-calendar/jquery.simple-calendar.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/js/calander.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/plugins/apexchart/apexcharts.min.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/plugins/apexchart/chart-data.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/js/circle-progress.min.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/plugins/slick/slick.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/js/app.js' %}" type="bdd448f9add30b2da5b2c265-text/javascript"></script>
+      <script src="{% static '/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js' %}" data-cf-settings="bdd448f9add30b2da5b2c265-|49" defer></script>
+
+
+      <script src="{% static '/js/Website/bootstrap.js' %}"></script>
+      <script src="{% static '/js/Website/custom.js' %}"></script>
+      <script src="{% static '/js/Website/jquery-3.4.1.min.js' %}"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha256-Zr3vByTlMGQhvMfgkQ5BtWRSKBGa2QlspKYJnkjZTmo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@3.0.1/dist/js/multi-select-tag.js"></script>
+      <script>
+        new MultiSelectTag('countries')  // id
+      </script>
+
+      <script src='https://codepen.io/FlorinPop17/pen/LYEBjmB.js'></script>
+      <script  src="{% static '/js/Website/progress_script.js' %}"></script>
+
+
+   </body>
+   <!-- Mirrored from preclinic.dreamstechnologies.com/html/template/patient-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 12:36:18 GMT -->
+</html>

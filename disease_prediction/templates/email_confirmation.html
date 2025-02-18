@@ -1,0 +1,15 @@
+{% autoescape off %}
+Hello {{ name }},
+
+Thank you for registering with DiseaseScan! Please confirm your email by clicking on the link below:
+
+Confirmation Link: http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+
+We are excited to have you on board and look forward to providing you with the best service possible.
+
+Best regards,
+The DiseaseScan Team
+
+
+
+{% endautoescape %}

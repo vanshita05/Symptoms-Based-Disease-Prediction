@@ -1,0 +1,110 @@
+{% extends 'doctor/index.html' %}
+{% block content %}
+{% load static %}
+
+
+         <div class="page-wrapper">
+            <div class="content">
+               <form method="post" action="" enctype="multipart/form-data">
+                   {% csrf_token %}
+                  <div class="card-box">
+                     <h3 class="card-title">Basic Informations</h3>
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="profile-img-wrap">
+                              <img class="inline-block" src="{{u.img.url}}" alt="user">
+                              <div class="fileupload btn">
+                                 <span class="btn-text">edit</span>
+                                 <input class="upload" type="file" id="img" name="img">
+                              </div>
+                           </div>
+                           <div class="profile-basic">
+                              <div class="row">
+                                 <div class="col-md-6">
+                                    <div class="input-block local-forms">
+                                       <label class="focus-label">Userame</label>
+                                       <input type="text" class="form-control floating" value="{{u.user.username}}" id="username" name="username">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="input-block local-forms">
+                                       <label class="focus-label">Name</label>
+                                       <input type="text" class="form-control floating" value="{{u.name}}" id="name" name="name">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="input-block local-forms">
+                                       <label class="focus-label">Email</label>
+                                       <input type="email" class="form-control floating" value="{{u.user.email}}" id="email" name="email">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="input-block local-forms ">
+                                       <label class="focus-label">Birth Date</label>
+                                       <div>
+                                          <center><a>{{u.dob}}</a></center>
+                                          <input class="form-control floating datetimepicker" type="date" id="dob" name="dob">
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="input-block local-forms">
+                                       <label class="focus-label">Gendar</label>
+                                       <select class="form-control select" id="gender" name="gender" >
+                                          <option {% if u.gender == 'Male' %}selected{% endif %}>Male</option>
+                                          <option {% if u.gender == 'Female' %}selected{% endif %}>Female</option>
+                                          <option {% if u.gender == 'Other' %}selected{% endif %}>Other</option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="input-block local-forms">
+                                       <label class="focus-label">Phone</label>
+                                       <input type="number" class="form-control floating" value="{{u.mobile_no}}" id="mobile_no" name="mobile_no">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4">
+                                    <div class="input-block local-forms">
+                                       <label class="focus-label">Registration Number</label>
+                                       <input type="text" class="form-control floating" value="{{u.registration_no}}" id="registration_no" name="registration_no">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4">
+                                    <div class="input-block local-forms">
+                                       <label class="focus-label">Qualification</label>
+                                       <input type="text" class="form-control floating" value="{{u.qualification}}" id="qualification" name="qualification">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4">
+                                    <div class="input-block local-forms">
+                                       <label class="focus-label">Specification</label>
+<!--                                       <input type="text" class="form-control floating" value="{{u.specialization}}" id="specialization" name="specialization">-->
+                                          <select class="form-control select" name="specialization" id="specialization">
+                                          <option disabled="disabled" selected="selected">Specialization</option>
+                                         <option {% if u.specialization == 'Rheumatologist' %}selected{% endif %}> Rheumatologist </option>
+                                         <option {% if u.specialization == 'Cardiologist' %}selected{% endif %}> Cardiologist </option>
+                                         <option {% if u.specialization == 'ENT specialist' %}selected{% endif %}> ENT specialist </option>
+                                         <option {% if u.specialization == 'Orthopedist' %}selected{% endif %}> Orthopedist </option>
+                                         <option {% if u.specialization == 'Neurologist' %}selected{% endif %}> Neurologist </option>
+                                         <option {% if u.specialization == 'Allergist/Immunologist' %}selected{% endif %}> Allergist/Immunologist </option>
+                                         <option {% if u.specialization == 'Urologist' %}selected{% endif %}> Urologist </option>
+                                         <option {% if u.specialization == 'Dermatologist' %}selected{% endif %}> Dermatologist </option>
+                                         <option {% if u.specialization == 'Gastroenterologist' %}selected{% endif %}> Gastroenterologist </option>
+                                         <option {% if u.specialization == 'Other' %}selected{% endif %}> Other </option>
+                                       </select>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="text-center ">
+                     <button class="btn btn-primary submit-btn mb-4" type="Submit">Save</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+
+{% endblock %}

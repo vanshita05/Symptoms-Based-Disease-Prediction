@@ -1,0 +1,70 @@
+{% extends 'madmin/index.html' %}
+{% block content %}
+{% load static %}
+
+         <div class="page-wrapper">
+            <div class="content">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="card card-table show-entire">
+                        <div class="card-body">
+                           <div class="page-table-header mb-2">
+                              <div class="row align-items-center">
+                                 <div class="col">
+                                    <div class="doctor-table-blk">
+                                       <h3>Diesease Information</h3>
+                                       <div class="doctor-search-blk">
+                                          <div class="top-nav-search table-search-blk">
+                                             <form>
+                                                <input type="text" class="form-control" placeholder="Search here">
+                                                <a class="btn"><img src="{% static '/img/icons/search-normal.svg' %}" alt></a>
+                                             </form>
+                                          </div>
+                                          <div class="add-group">
+                                             <a href="add-appointment.html" class="btn btn-primary add-pluss ms-2"><img src="{% static '/img/icons/plus.svg' %}" alt></a>
+                                             <a href="javascript:;" class="btn btn-primary doctor-refresh ms-2"><img src="{% static '/img/icons/re-fresh.svg' %}" alt></a>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="table-responsive">
+                              <table class="table border-0 custom-table comman-table datatable mb-0">
+                                 <thead>
+                                    <tr>
+                                       <th>Name</th>
+                                       <th>No. of Symptoms</th>
+                                       <th>Symptoms</th>
+                                       <th>Predicted Disease 1</th>
+                                       <th>Predicted Disease 2</th>
+                                       <th>Predicted Disease 3</th>
+                                       <th>Predicted Disease 4</th>
+                                       <th>Predicted Disease 5</th>
+                                       <th></th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                 {% for i in did %}
+                                    <tr>
+                                       <td>{{i.patient}}</td>
+                                       <td>{{i.no_of_symp}}</td>
+                                       <td>{{i.symptomsname}}</td>
+                                       <td>{{i.diseasename1}} : {{i.confidence1}}%</td>
+                                       <td>{{i.diseasename2}} : {{i.confidence2}}%</td>
+                                       <td>{{i.diseasename3}} : {{i.confidence3}}%</td>
+                                       <td>{{i.diseasename4}} : {{i.confidence4}}%</td>
+                                       <td>{{i.diseasename5}} : {{i.confidence5}}%</td>
+                                    </tr>
+                                 {% endfor %}
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+      </div>
+
+{% endblock %}

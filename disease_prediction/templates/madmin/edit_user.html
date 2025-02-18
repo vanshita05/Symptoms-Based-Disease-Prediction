@@ -1,0 +1,101 @@
+{% extends 'madmin/index.html' %}
+{% block content %}
+{% load static %}
+
+         <div class="page-wrapper">
+            <div class="content">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="card">
+                        <div class="card-body">
+                           <form method="post" action="" enctype="multipart/form-data">
+                              {% csrf_token %}
+                              <div class="row">
+                                 <div class="col-12">
+                                    <div class="form-heading">
+                                       <h4>Edit User Details</h4>
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-6">
+                                    <div class="input-block local-forms">
+                                       <label>User Name <span class="login-danger">*</span></label>
+                                       <input class="form-control" type="text" id="username" name="username" value="{{uid.user.username}}">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-6">
+                                    <div class="input-block local-forms">
+                                       <label>Name <span class="login-danger">*</span></label>
+                                       <input class="form-control" type="text" id="name" name="name" value="{{uid.name}}">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-6">
+                                    <div class="input-block local-forms">
+                                       <label>Email <span class="login-danger">*</span></label>
+                                       <input class="form-control" type="email" id="email" name="email" value="{{uid.user.email}}">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-6">
+                                    <div class="input-block local-forms ">
+                                       <label>Date Of Birth <span class="login-danger">*</span></label>
+                                       <center><a>{{uid.dob}}</a></center>
+                                       <input class="form-control datetimepicker" type="date" id="dob" name="dob" value="{{uid.dob}}">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-6">
+                                    <div class="input-block select-gender">
+                                       <label class="gen-label">Gender<span class="login-danger">*</span></label>
+                                       <div class="form-check-inline">
+                                          <label class="form-check-label">
+                                          <input type="radio" name="gender" value="Male" class="form-check-input" {% if uid.gender == 'Male' %}checked{% endif %}>Male
+                                          </label>
+                                       </div>
+                                       <div class="form-check-inline">
+                                          <label class="form-check-label">
+                                          <input type="radio" name="gender" value="Female" class="form-check-input" {% if uid.gender == 'Female' %}checked{% endif %}>Female
+                                          </label>
+                                       </div>
+                                       <div class="form-check-inline">
+                                          <label class="form-check-label">
+                                          <input type="radio" name="gender" value="Other" class="form-check-input" {% if uid.gender == 'Other' %}checked{% endif %}>Other
+                                          </label>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-6">
+                                    <div class="input-block local-forms">
+                                       <label>Mobile <span class="login-danger">*</span></label>
+                                       <input class="form-control" type="text" id="mobile_no" name="mobile_no" value="{{uid.mobile_no}}">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-6">
+                                    <div class="input-block local-top-form">
+                                       <label class="local-top">Image <span class="login-danger">*</span></label>
+                                       <div class="settings-btn upload-files-avator">
+                                          <input type="file" accept="image/*" name="img" id="img" value="{{uid.img.url}}" onchange="if (!window.__cfRLUnblockHandlers) return false; loadFile(event)" class="hide-input" data-cf-modified-e6b517f682b3e4d60272050d->
+                                          <label for="img" class="upload">Choose File</label>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-6">
+                                    <div class="input-block local-forms">
+                                       <label>Password <span class="login-danger">*</span></label>
+                                       <input class="form-control" type="password" id="password" name="password" value="{{uid.user.password}}">
+                                    </div>
+                                 </div>
+                                 <div class="col-12">
+                                    <div class="doctor-submit text-end">
+                                       <button type="submit" class="btn btn-primary submit-form me-2">Submit</button>
+                                       <button type="submit" class="btn btn-primary cancel-form">Cancel</button>
+                                    </div>
+                                 </div>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+{% endblock %}

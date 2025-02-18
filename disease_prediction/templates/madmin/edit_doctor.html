@@ -1,0 +1,145 @@
+{% extends 'madmin/index.html' %}
+{% block content %}
+{% load static %}
+
+         <div class="page-wrapper">
+            <div class="content">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="card">
+                        <div class="card-body">
+                           <form method="post" action="" enctype="multipart/form-data">
+                              {% csrf_token %}
+                              <div class="row">
+                                 <div class="col-12">
+                                    <div class="form-heading">
+                                       <h4>Edit Doctor Details</h4>
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-6">
+                                    <div class="input-block local-forms">
+                                       <label>User Name <span class="login-danger">*</span></label>
+                                       <input class="form-control" type="text" id="username" name="username" value="{{doctor.user.username}}">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-6">
+                                    <div class="input-block local-forms">
+                                       <label>Name <span class="login-danger">*</span></label>
+                                       <input class="form-control" type="text" id="name" name="name" value="{{doctor.name}}">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-6">
+                                    <div class="input-block local-forms">
+                                       <label>Email <span class="login-danger">*</span></label>
+                                       <input class="form-control" type="email" id="email" name="email" value="{{doctor.user.email}}">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-6">
+                                    <div class="input-block local-forms">
+                                       <label>Date Of Birth <span class="login-danger">*</span></label>
+                                       <center><a>{{doctor.dob}}</a></center>
+                                       <input class="form-control datetimepicker" type="date" id="dob" name="dob" value="{{doctor.dob}}">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-4">
+                                    <div class="input-block select-gender">
+                                       <label class="gen-label">Gender<span class="login-danger">*</span></label>
+                                       <div class="form-check-inline">
+                                          <label class="form-check-label">
+                                          <input type="radio" name="gender" value="Male" class="form-check-input mt-0" {% if doctor.gender == 'Male' %}checked{% endif %}>Male
+                                          </label>
+                                       </div>
+                                       <div class="form-check-inline">
+                                          <label class="form-check-label">
+                                          <input type="radio" name="gender" value="Female" class="form-check-input mt-0" {% if doctor.gender == 'Female' %}checked{% endif %}>Female
+                                          </label>
+                                       </div>
+                                       <div class="form-check-inline">
+                                          <label class="form-check-label">
+                                          <input type="radio" name="gender" value="Other" class="form-check-input mt-0" {% if doctor.gender == 'Other' %}checked{% endif %}>Other
+                                          </label>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-4">
+                                    <div class="input-block local-forms">
+                                       <label>Mobile <span class="login-danger">*</span></label>
+                                       <input class="form-control" type="text" id="mobile_no" name="mobile_no" value="{{doctor.mobile_no}}">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-4">
+                                    <div class="input-block local-top-form">
+                                       <label class="local-top">Image <span class="login-danger">*</span></label>
+                                       <div class="settings-btn upload-files-avator">
+                                          <input type="file" accept="image/*" value="{{doctor.img.url}}" name="img" id="img" onchange="if (!window.__cfRLUnblockHandlers) return false; loadFile(event)" class="hide-input" data-cf-modified-2dce9435838e116046505b06->
+                                          <label for="img" class="upload">Choose File</label>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-6">
+                                    <div class="input-block local-forms">
+                                       <label>Registration Number <span class="login-danger">*</span></label>
+                                       <input class="form-control" type="text" id="registration_no" name="registration_no" value="{{doctor.registration_no}}">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-6">
+                                    <div class="input-block local-forms">
+                                       <label>Qualification <span class="login-danger">*</span></label>
+                                       <input class="form-control" type="text" id="qualification" name="qualification" value="{{doctor.qualification}}">
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-6">
+                                    <div class="input-block local-forms">
+                                       <label>Specialization <span class="login-danger">*</span></label>
+                                       <select class="form-control select" name="specialization" id="specialization">
+                                          <option disabled="disabled" selected="selected">Specialization</option>
+                                         <option {% if doctor.specialization == 'Rheumatologist' %}selected{% endif %}> Rheumatologist </option>
+                                         <option {% if doctor.specialization == 'Cardiologist' %}selected{% endif %}> Cardiologist </option>
+                                         <option {% if doctor.specialization == 'ENT specialist' %}selected{% endif %}> ENT specialist </option>
+                                         <option {% if doctor.specialization == 'Orthopedist' %}selected{% endif %}> Orthopedist </option>
+                                         <option {% if doctor.specialization == 'Neurologist' %}selected{% endif %}> Neurologist </option>
+                                         <option {% if doctor.specialization == 'Allergist/Immunologist' %}selected{% endif %}> Allergist/Immunologist </option>
+                                         <option {% if doctor.specialization == 'Urologist' %}selected{% endif %}> Urologist </option>
+                                         <option {% if doctor.specialization == 'Dermatologist' %}selected{% endif %}> Dermatologist </option>
+                                         <option {% if doctor.specialization == 'Gastroenterologist' %}selected{% endif %}> Gastroenterologist </option>
+                                         <option {% if doctor.specialization == 'Other' %}selected{% endif %}> Other </option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-md-6 col-xl-6">
+                                    <div class="input-block local-forms">
+                                       <label>Password <span class="login-danger">*</span></label>
+                                       <input class="form-control" type="password" id="password" name="password" value="{{doctor.user.password}}">
+                                    </div>
+                                 </div>
+                                 <!-- <div class="col-12 col-md-6 col-xl-6">
+                                    <div class="input-block select-gender">
+                                       <label class="gen-label">Status <span class="login-danger">*</span></label>
+                                       <div class="form-check-inline">
+                                          <label class="form-check-label">
+                                          <input type="radio" name="gender" class="form-check-input mt-0">Active
+                                          </label>
+                                       </div>
+                                       <div class="form-check-inline">
+                                          <label class="form-check-label">
+                                          <input type="radio" name="gender" class="form-check-input mt-0">In Active
+                                          </label>
+                                       </div>
+                                    </div>
+                                 </div> -->
+                                 <div class="col-12">
+                                    <div class="doctor-submit text-end">
+                                       <button type="submit" class="btn btn-primary submit-form me-2">Submit</button>
+                                       <button type="submit" class="btn btn-primary cancel-form">Cancel</button>
+                                    </div>
+                                 </div>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+      </div>
+
+{% endblock %}

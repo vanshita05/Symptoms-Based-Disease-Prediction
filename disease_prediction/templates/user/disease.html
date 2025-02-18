@@ -1,0 +1,132 @@
+{% extends 'user/user_panel.html' %}
+{% block content %}
+{% load static %}
+
+
+
+
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <h1>Name :- {{u.name}} &emsp;&emsp; Age :- {{u.age}}</h1>
+                    <h5>Symptoms: {{uid.symptomsname}}</h5>
+                    <div class="five">
+                        <span>Probability of Disease :- {{uid.diseasename1}}</span>
+                        <div class="progress">
+                            <div class="progress-done" data-done="{{uid.confidence1}}">
+                                {{uid.confidence1}}%
+                            </div>
+                        </div>
+                        <div class="w-full h-40 flex items-center justify-center" style="margin-top:-60px; margin-bottom:-50px;">
+                            <a href="https://www.google.com/search?q={{uid.diseasename1}}" class="relative px-5 py-3 overflow-hidden font-medium text-gray-600 bg-white border border-gray-100 rounded-lg shadow-inner group">
+                                <span class="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-gray-600 group-hover:w-full ease"></span>
+                                <span class="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-gray-600 group-hover:w-full ease"></span>
+                                <span class="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+                                <span class="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+                                <span class="absolute inset-0 w-full h-full duration-300 delay-300 bg-gray-900 opacity-0 group-hover:opacity-100"></span>
+                                <span class="relative transition-colors duration-300 delay-200 group-hover:text-white ease">Know More About {{uid.diseasename1}}</span>
+                            </a>
+                        </div>
+                        <br>
+
+                        <span>Probability of Disease :- {{uid.diseasename2}}</span>
+                        <div class="progress">
+                            <div class="progress-done" data-done="{{uid.confidence2}}" style="width:{{uid.confidence2}}% ; opacity:1;">
+                                {{uid.confidence2}}%
+                            </div>
+                        </div>
+                        <div class="w-full h-40 flex items-center justify-center" style="margin-top:-60px; margin-bottom:-50px;">
+                            <a href="https://www.google.com/search?q={{uid.diseasename2}}" class="relative px-5 py-3 overflow-hidden font-medium text-gray-600 bg-white border border-gray-100 rounded-lg shadow-inner group">
+                                <span class="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-gray-600 group-hover:w-full ease"></span>
+                                <span class="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-gray-600 group-hover:w-full ease"></span>
+                                <span class="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+                                <span class="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+                                <span class="absolute inset-0 w-full h-full duration-300 delay-300 bg-gray-900 opacity-0 group-hover:opacity-100"></span>
+                                <span class="relative transition-colors duration-300 delay-200 group-hover:text-white ease">Know More About {{uid.diseasename2}}</span>
+                            </a>
+                        </div>
+                        <br>
+
+                        <span>Probability of Disease :- {{uid.diseasename3}}</span>
+                        <div class="progress">
+                            <div class="progress-done" data-done="{{uid.confidence3}}" style="width:{{uid.confidence3}}% ; opacity:1;">
+                                {{uid.confidence3}}%
+                            </div>
+                        </div>
+                        <div class="w-full h-40 flex items-center justify-center" style="margin-top:-60px; margin-bottom:-50px;">
+                            <a href="https://www.google.com/search?q={{uid.diseasename3}}" class="relative px-5 py-3 overflow-hidden font-medium text-gray-600 bg-white border border-gray-100 rounded-lg shadow-inner group">
+                                <span class="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-gray-600 group-hover:w-full ease"></span>
+                                <span class="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-gray-600 group-hover:w-full ease"></span>
+                                <span class="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+                                <span class="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+                                <span class="absolute inset-0 w-full h-full duration-300 delay-300 bg-gray-900 opacity-0 group-hover:opacity-100"></span>
+                                <span class="relative transition-colors duration-300 delay-200 group-hover:text-white ease">Know More About {{uid.diseasename3}}</span>
+                            </a>
+                        </div>
+                        <br>
+
+                        <span>Probability of Disease :- {{uid.diseasename4}}</span>
+                        <div class="progress">
+                            <div class="progress-done" data-done="{{uid.confidence4}}" style="width:{{uid.confidence4}}% ; opacity:1;">
+                                {{uid.confidence4}}%
+                            </div>
+                        </div>
+                        <div class="w-full h-40 flex items-center justify-center" style="margin-top:-60px; margin-bottom:-50px;">
+                            <a href="https://www.google.com/search?q={{uid.diseasename4}}" class="relative px-5 py-3 overflow-hidden font-medium text-gray-600 bg-white border border-gray-100 rounded-lg shadow-inner group">
+                                <span class="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-gray-600 group-hover:w-full ease"></span>
+                                <span class="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-gray-600 group-hover:w-full ease"></span>
+                                <span class="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+                                <span class="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+                                <span class="absolute inset-0 w-full h-full duration-300 delay-300 bg-gray-900 opacity-0 group-hover:opacity-100"></span>
+                                <span class="relative transition-colors duration-300 delay-200 group-hover:text-white ease">Know More About {{uid.diseasename4}}</span>
+                            </a>
+                        </div>
+                        <br>
+
+                        <span>Probability of Disease :- {{uid.diseasename5}}</span>
+                        <div class="progress">
+                            <div class="progress-done" data-done="{{uid.confidence5}}" style="width:{{uid.confidence5}}% ; opacity:1;">
+                                {{uid.confidence5}}%
+                            </div>
+                        </div>
+                        <div class="w-full h-40 flex items-center justify-center" style="margin-top:-60px; margin-bottom:-50px;">
+                            <a href="https://www.google.com/search?q={{uid.diseasename5}}" class="relative px-5 py-3 overflow-hidden font-medium text-gray-600 bg-white border border-gray-100 rounded-lg shadow-inner group">
+                                <span class="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-gray-600 group-hover:w-full ease"></span>
+                                <span class="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-gray-600 group-hover:w-full ease"></span>
+                                <span class="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+                                <span class="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+                                <span class="absolute inset-0 w-full h-full duration-300 delay-300 bg-gray-900 opacity-0 group-hover:opacity-100"></span>
+                                <span class="relative transition-colors duration-300 delay-200 group-hover:text-white ease">Know More About {{uid.diseasename5}}</span>
+                            </a>
+                        </div>
+                    </div>
+                </center>
+            </div>
+        </div>
+
+
+<!--        <center>-->
+<!--            <div class="information" >-->
+<!--                <h1>-->
+<!--                    There is no medical advice offered by this tool. THIS IS ONLY MEANT TO BE USED FOR INFORMATION. SYSTEM DOES NOT REPLACE ADVICE, DIAGNOSIS, OR TREATMENT FROM PROFESSIONAL MEDICINE.-->
+<!--                </h1>-->
+<!--            </div>-->
+<!--        </center>-->
+
+        <div class="w-full h-40 flex items-center justify-center" style="margin-top: 10px;">
+            <a href="/consult_doctor" class="relative px-5 py-3 overflow-hidden font-medium text-gray-600 bg-white border border-gray-100 rounded-lg shadow-inner group">
+                <span class="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-gray-600 group-hover:w-full ease"></span>
+                <span class="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-gray-600 group-hover:w-full ease"></span>
+                <span class="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+                <span class="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+                <span class="absolute inset-0 w-full h-full duration-300 delay-300 bg-gray-900 opacity-0 group-hover:opacity-100"></span>
+                <span class="relative transition-colors duration-300 delay-200 group-hover:text-white ease">Consult a {{uid.consultdoctor}} for {{uid.diseasename1}}, As it has higgest probability</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
