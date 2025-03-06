@@ -1,21 +1,20 @@
 # Introduction
 
-This project leverages innovative Deep learning models and Django framework symptoms based disease prediction. It also provides detailed information about the top predicted diseases, including chat with the doctor.
-The model which performed best was Sequential Model with SoftMax Activation Function whit accuracy of 97.66% and we build prediction model on this for further usage in Django framework for UI integration. 
-We're trying to predict all sorts of diseases like Fungal infection, Allergy¸ Diabetes, etc.
-covering a wide range of health issues. By studying different symptoms like Itching, Skin
-rash, Nodal skin Eruptions, etc. our model learns how to tell disease possibility from it. This system is designed to be accessible and useful even to individuals with limited medical knowledge. It can assist in early disease detection and diagnosis, providing users with an initial understanding of the severity of their condition. 
+This project leverages innovative deep learning models and the Django framework for symptom-based disease prediction. It also provides detailed information about the top predicted diseases, including a chat feature with a doctor. The model that performed best was the Sequential Model with a SoftMax Activation Function, achieving an accuracy of 97.66%. We built the prediction model on this architecture for further usage in the Django framework for UI integration.
+
+We're aiming to predict a wide range of diseases, including Fungal infections, Allergies, Diabetes, etc. By analyzing various symptoms such as Itching, Skin rash, Nodal skin eruptions, and more, our model learns how to predict disease possibilities. This system is designed to be accessible and useful even to individuals with limited medical knowledge. It can assist in early disease detection and diagnosis, giving users an initial understanding of the severity of their condition.
+
 
 # Background
 
-In healthcare, spotting diseases early is crucial. This project uses machine learning to
-predict diseases based on symptoms. We used CSV files, which contain a dataset with lots
-of symptoms and diseases. Our model, the Convolutional Neural Network (CNN)
-Sequential Model with SoftMax activation function, looks at these symptoms to find
-patterns and identify diseases early.
-After lots of training and testing, our model can predict diseases with an impressive
-accuracy of 97.66%. But it's not just about finding diseases. To make this process accessible and user-friendly, we have designed a user interface (UI) that simplifies interaction with the model. Through this interface, users can input their symptoms, and the model provides predictions about potential diseases. Moreover, users have the option to connect with healthcare professionals for further guidance and treatment.
-This project breaks new ground by utilizing symptom-based data for disease prediction, aiming to detect illnesses earlier and expedite treatment. Through the integration of advanced technology, comprehensive symptom data, and a user-friendly interface (UI), our goal is to enhance healthcare accessibility and outcomes for all.
+In healthcare, early disease detection is crucial. This project applies machine learning to predict diseases based on symptoms. We used CSV files containing a dataset with numerous symptoms and corresponding diseases.
+
+Our model, a Convolutional Neural Network (CNN) Sequential Model with SoftMax activation function, examines these symptoms to find patterns and identify diseases early. After extensive training and testing, our model achieves an impressive accuracy of 97.66%.
+
+Beyond just predicting diseases, we have designed a user-friendly interface (UI) to simplify interaction with the model. Users can input their symptoms, and the model provides predictions about potential diseases. Moreover, users can connect with healthcare professionals for further guidance and treatment.
+
+This project advances disease prediction by leveraging symptom-based data, allowing for earlier diagnosis and improved healthcare accessibility. Through the integration of advanced technology, comprehensive symptom data, and a user-friendly interface, our goal is to enhance healthcare outcomes for all.
+
 
 # Dataset Used
 
@@ -32,3 +31,11 @@ We utilized various Deep learning models in our project, including Sequential Mo
 4. Random Forest: 90.6%
 5. SVM: 89.87%
 6. Gradient Boosting: 86.57%
+
+
+# Research Paper
+
+Our work has also been published as a research paper and presented at 2024 4th Asian Conference on Innovation in Technology (ASIANCON). You can access the paper using the link below:
+🔗 Research Paper: Symptom-Based Disease Prediction Framework Integrated with Django and Deep Learning Models
+The paper contains further details about our methodology, experiments, and results, along with information about the conference where our work was presented.
+
