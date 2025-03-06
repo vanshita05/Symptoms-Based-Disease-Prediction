@@ -36,6 +36,8 @@ We utilized various Deep learning models in our project, including Sequential Mo
 # Research Paper
 
 Our work has also been published as a research paper and presented at 2024 4th Asian Conference on Innovation in Technology (ASIANCON). You can access the paper using the link below:
+
 🔗 Research Paper: Symptom-Based Disease Prediction Framework Integrated with Django and Deep Learning Models
+
 The paper contains further details about our methodology, experiments, and results, along with information about the conference where our work was presented.
 
